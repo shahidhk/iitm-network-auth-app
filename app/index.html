@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>IIT Madras Network Auth</title>
+
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'>
+	<link rel="stylesheet" type="text/css" href="./node_modules/angular-material/angular-material.css">
+	<link rel="stylesheet" type="text/css" href="styles/app.css">
+
+	<script type="text/javascript" src="./node_modules/angular/angular.js"></script>
+	<script type="text/javascript" src="./node_modules/angular-aria/angular-aria.js"></script>
+	<script type="text/javascript" src="./node_modules/angular-animate/angular-animate.js"></script>
+	<script type="text/javascript" src="./node_modules/angular-material/angular-material.js"></script>
+
+	<script type="text/javascript" src="scripts/index.js"></script>
+	<script type="text/javascript" src="scripts/app/authController.js"></script>
+	<script type="text/javascript" src="scripts/app/config.js"></script>
+
+	<!--Include live reloading-->
+	<script src="http://localhost:35729/livereload.js"></script>
+</head>
+<body>
+
+	<div ng-controller="AuthController as auth" layout="column" layout-fill>
+
+		<!-- Input tasks -->
+		<md-content layout-fill md-theme="docs-dark" layout-align="center center">
+            <md-progress-linear md-theme="docs-dark" md-mode="{{auth.loading ? 'indeterminate' : null}}"></md-progress-linear>
+			<div layout="row" layout-align="center center">
+				<div>
+                    <img ng-src="res/iitm.png" class="logo" alt="Washed Out" flex >
+				</div>
+			</div>
+
+            <div class="loading-icon">
+            </div>
+
+			<div layout="row" layout-align="center center">
+				<div>
+                    <!--<md-progress-circular md-mode="{{auth.loadingMode}}"></md-progress-circular>-->
+                    <md-icon ng-show="auth.connected" class="indicator" md-svg-src="res/ic_signal_wifi_4_bar_white_36px.svg"></md-icon>
+                    <md-icon ng-show="!auth.connected" class="indicator" md-svg-src="res/ic_signal_wifi_off_white_36px.svg"></md-icon>
+				</div>
+			</div>
+			<form ng-submit="auth.login()" layout-align="center center" class="todo-form">
+                <div layout-gt-sm="row">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>LDAP username</label>
+                        <input ng-model="auth.username">
+                    </md-input-container>
+                </div>
+                <div layout-gt-sm="row">
+                    <md-input-container class="md-block" flex>
+                        <label>LDAP password</label>
+                        <input type="password" ng-model="auth.password">
+                    </md-input-container>
+                </div>
+
+
+                <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+                    <md-button class="md-primary md-raised" type="submit" aria-label="Add task">Login</md-button>
+                    <md-button ng-click="auth.logout()" class="md-raised md-warn">Logout</md-button>
+                </section>
+
+			</form>
+
+		</md-content>
+
+
+
+	</div>
+
+</body>
+</html>

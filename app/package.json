@@ -1,0 +1,17 @@
+{
+  "name": "iitmnetworkauth",
+  "version": "0.1.0",
+  "description": "Cross platform application for authentication inside IIT Madras campus network.",
+  "author": "Shahidh K Muhammed <shahidhkmuhammed@gmail.com>",
+  "main": "main.js",
+  "license": "MIT",
+  "dependencies": {
+    "angular": "^1.5.5",
+    "angular-animate": "^1.5.5",
+    "angular-aria": "^1.5.5",
+    "angular-material": "^1.0.8",
+    "electron-squirrel-startup": "^1.0.0",
+    "iitm-network-auth": "^0.3.0",
+    "winston": "^2.2.0"
+  }
+}
