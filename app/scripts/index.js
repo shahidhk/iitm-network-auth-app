@@ -1,7 +1,6 @@
 const electron = require('electron');
 const {ipcRenderer} = electron;
 const {remote} = electron;
-const IITMNetworkAuth = require('iitm-network-auth');
 
 function boot() {
 
@@ -10,7 +9,7 @@ function boot() {
 	angular
 		.module('app')
 		.value('logger', logger)
-		.value('authenticator', IITMNetworkAuth);
+		.value('ipcRenderer', ipcRenderer);
 
 	angular.bootstrap(document, ['app'], {
 		strictDi: true

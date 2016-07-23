@@ -23,7 +23,6 @@
 
 	<div ng-controller="AuthController as auth" layout="column" layout-fill>
 
-		<!-- Input tasks -->
 		<md-content layout-fill md-theme="docs-dark" layout-align="center center">
             <md-progress-linear md-theme="docs-dark" md-mode="{{auth.loading ? 'indeterminate' : null}}"></md-progress-linear>
 			<div layout="row" layout-align="center center">
@@ -56,18 +55,13 @@
                     </md-input-container>
                 </div>
 
-
                 <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
                     <md-button class="md-primary md-raised" type="submit" aria-label="Add task">Login</md-button>
                     <md-button ng-click="auth.logout()" class="md-raised md-warn">Logout</md-button>
                 </section>
-
 			</form>
 
 		</md-content>
-
-
-
 	</div>
 
 </body>

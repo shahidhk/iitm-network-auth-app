@@ -108,3 +108,43 @@ app.on('ready', function() {
     }
 
 });
+
+
+const IITMNetworkAuth = require('iitm-network-auth');
+const auth = new IITMNetworkAuth('','','nfw')
+
+// Initialise the auth object
+var shouldConnect = true; 
+// Add listener on events (refer https://github.com/shahidhk/iitm-network-auth for complete list of events)
+var emitter = auth.get_emitter();
+emitter.on('log_in', function (e) {
+    logger.debug(e.data);
+    if (e.data.status) {
+        auth.start_refresh();
+        mainWindow.webContents.send('log-in-done', e);
+    } else {
+        auth.login();
+    }
+});
+emitter.on('error', function (e) {
+    logger.error(e.data);
+    mainWindow.webContents.send('error-happened', e);
+});
+emitter.on('log_out', function (e) {
+    logger.debug(e.data);
+    mainWindow.webContents.send('log-out-done', e);
+});
+emitter.on('session_refresh', function (e) {
+    logger.debug(e.data);
+    mainWindow.webContents.send('session-refreshed', e);
+});
+
+ipcMain.on('do-log-out', function (event) {
+    auth.logout();
+});
+
+ipcMain.on('do-log-in', function (event, username, password) {
+    auth.set_credentials(username, password);
+    auth.login()
+});
+

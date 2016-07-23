@@ -2,9 +2,9 @@
 
     angular
         .module('app', ['ngMaterial', 'ngAnimate'])
-        .controller('AuthController', ['$scope', '$window', '$mdToast', 'logger', 'authenticator', AuthController]);
+        .controller('AuthController', ['$scope', '$window', '$mdToast', 'logger', 'ipcRenderer',  AuthController]);
 
-    function AuthController($scope, $window, $mdToast, logger, authenticator) {
+    function AuthController($scope, $window, $mdToast, logger, ipcRenderer) {
 
         // List of bindable properties and methods
         var ctrl = this;
@@ -18,37 +18,27 @@
         ctrl.logout = logout;
         ctrl.shouldConnect = true;
 
-        // Initialise the auth object
-        var auth = new authenticator(ctrl.username, ctrl.password, ctrl.mode);
-        var emitter = auth.get_emitter();
-
-        // Add listener on events (refer https://github.com/shahidhk/iitm-network-auth for complete list of events)
-        emitter.on('log_in', function (e) {
+        ipcRenderer.on('log-in-done', function (e, arg) {
             ctrl.loading = false;
             ctrl.connected = true;
-            logger.log(e.data);
-            showToast('Logged in with id: ' + e.data.message);
-            auth.start_refresh();
+            showToast('Logged in with id: ' + arg.data.message);
             $scope.$apply();
         });
-        emitter.on('error', function (e) {
+        ipcRenderer.on('error-happened', function (e, a) {
             ctrl.loading = false;
-            logger.error(e.data);
-            showToast('ERROR: ' + e.data.error);
+            showToast('ERROR: ' + a.data.error);
             $scope.$apply();
         });
-        emitter.on('log_out', function (e) {
+        ipcRenderer.on('log-out-done', function (event, arg) {
             ctrl.loading = false;
             ctrl.connected = false;
-            logger.log(e.data);
             showToast('Logged out');
             $scope.$apply();
             if (ctrl.shouldConnect) {
-                auth.login();
+                login();
             }
         });
-        emitter.on('session_refresh', function (e) {
-            logger.log(e.data);
+        ipcRenderer.on('session-refreshed', function (e) {
             showToast('Session refreshed');
         });
 
@@ -57,13 +47,12 @@
             $window.localStorage.setItem('ldap_username', ctrl.username);
             $window.localStorage.setItem('ldap_password', ctrl.password);
             ctrl.loading = true;
-            auth.set_credentials(ctrl.username, ctrl.password);
-            auth.login();
+            ipcRenderer.send('do-log-in', ctrl.username, ctrl.password);
         }
         function logout() {
             ctrl.loading = true;
             ctrl.shouldConnect = false;
-            auth.logout(); 
+            ipcRenderer.send('do-log-out'); 
         }
 
         // Helper function to show simple toasts
@@ -76,7 +65,7 @@
         }
 
         // Logout and start a new session when app opens
-        auth.logout();
+        ipcRenderer.send('do-log-out'); 
     }
 
 })();
