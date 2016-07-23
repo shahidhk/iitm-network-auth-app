@@ -23,7 +23,8 @@
     "live-reload": "~1.1.0",
     "mkdirp": "~0.5.1",
     "npm-run-all": "~2.3.0",
-    "rimraf": "~2.5.3"
+    "rimraf": "~2.5.3",
+    "gm": "~1.22.0"
   },
   "build": {
     "appId": "in.shahidh.iitmnetworkauth",
