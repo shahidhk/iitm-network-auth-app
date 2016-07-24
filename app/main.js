@@ -22,10 +22,10 @@ var feedURL = "";
 // Don't use auto-updater if we are in development 
 if (!isDevelopment) {
     if (os.platform() === 'darwin') {
-        updateFeed = 'http://ea-todo.herokuapp.com/updates/latest'; 
+        updateFeed = 'https://server.waviness63.hasura-app.io/update/darwin/' + app.getVersion();;
     }
     else if (os.platform() === 'win32') {
-        updateFeed = 'http://eatodo.s3.amazonaws.com/updates/latest/win' + (os.arch() === 'x64' ? '64' : '32');
+        updateFeed = 'https://server.waviness63.hasura-app.io/update/win32/' +app.getVersion();
     }
 
     autoUpdater.addListener("update-available", function(event) {
@@ -59,9 +59,7 @@ if (!isDevelopment) {
         }
     });
     
-    const appVersion = require('./package.json').version;
-    const feedURL = updateFeed + '?v=' + appVersion;
-    autoUpdater.setFeedURL(feedURL);
+    autoUpdater.setFeedURL(updateFeed);
 }
 
 // Quit when all windows are closed
@@ -78,7 +76,7 @@ app.on('ready', function() {
     // Other options available at:
     // http://electron.atom.io/docs/latest/api/browser-window/#new-browserwindow-options
     var w = 400;
-    var h = 599; 
+    var h = 600; 
     mainWindow = new BrowserWindow({
         name: "iitm-network-auth",
         width: w,
@@ -96,7 +94,7 @@ app.on('ready', function() {
     mainWindow.loadURL('file://' + __dirname + "/index.html");
 
     // Uncomment to use Chrome developer tools
-    mainWindow.webContents.openDevTools({detach:true});
+    //mainWindow.webContents.openDevTools({detach:true});
 
     // Cleanup when window is closed
     mainWindow.on('closed', function() {
