@@ -28,10 +28,11 @@
     "gm": "~1.22.0"
   },
   "build": {
-    "appId": "in.shahidh.iitmnetworkauth",
-    "app-category-type": "public.app-category.tools",
+    "appId": "in.shahidh.iitmnetworkauthapp",
+    "app-category-type": "public.app-category.utilities",
+    "productName": "IIT Madras Network Auth",
     "dmg": {
-      "title": "IIT Madras Auth",
+      "title": "IIT Madras Network Auth",
       "background": "build/background.png",
       "icon": "build/icon.icns",
       "icon-size": 128,
@@ -50,10 +51,13 @@
       ]
     },
     "win": {
-      "iconUrl": "https://waviness63.blob.core.windows.net/iitm-network-auth/icon.ico"
+      "target": ["squirrel","nsis"],  
+      "msi": "true",
+      "remoteReleases": true,
+      "iconUrl": "https://github.com/shahidhk/iitm-network-auth-app/blob/master/build/icon.ico?raw=true"
     },
     "linux": {
-      "target": ["deb", "AppImage"]
+      "target": ["deb", "AppImage", "tar.gz"]
     }
   }
 }

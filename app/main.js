@@ -77,11 +77,14 @@ app.on('ready', function() {
     // Create main window
     // Other options available at:
     // http://electron.atom.io/docs/latest/api/browser-window/#new-browserwindow-options
+    var w = 400;
+    var h = 599; 
     mainWindow = new BrowserWindow({
         name: "iitm-network-auth",
-        width: 400,
-        height: 560,
-        resizable: false,
+        width: w,
+        height: h,
+        minWidth: w,
+        minHeight: h,
         darkTheme: true,
         fullscreenable: false,
         toolbar: false
@@ -93,7 +96,7 @@ app.on('ready', function() {
     mainWindow.loadURL('file://' + __dirname + "/index.html");
 
     // Uncomment to use Chrome developer tools
-    //mainWindow.webContents.openDevTools({detach:true});
+    mainWindow.webContents.openDevTools({detach:true});
 
     // Cleanup when window is closed
     mainWindow.on('closed', function() {

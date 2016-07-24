@@ -13,6 +13,7 @@
 	<script type="text/javascript" src="./node_modules/angular-material/angular-material.js"></script>
 
 	<script type="text/javascript" src="scripts/index.js"></script>
+	<script type="text/javascript" src="scripts/vendor/external_links.js"></script>
 	<script type="text/javascript" src="scripts/app/authController.js"></script>
 	<script type="text/javascript" src="scripts/app/config.js"></script>
 
@@ -22,21 +23,16 @@
 <body>
 
 	<div ng-controller="AuthController as auth" layout="column" layout-fill>
-
 		<md-content layout-fill md-theme="docs-dark" layout-align="center center">
             <md-progress-linear md-theme="docs-dark" md-mode="{{auth.loading ? 'indeterminate' : null}}"></md-progress-linear>
 			<div layout="row" layout-align="center center">
 				<div>
-                    <img ng-src="res/iitm.png" class="logo" alt="Washed Out" flex >
+                    <img ng-src="res/iitm.png" class="logo" flex >
 				</div>
 			</div>
 
-            <div class="loading-icon">
-            </div>
-
 			<div layout="row" layout-align="center center">
 				<div>
-                    <!--<md-progress-circular md-mode="{{auth.loadingMode}}"></md-progress-circular>-->
                     <md-icon ng-show="auth.connected" class="indicator" md-svg-src="res/ic_signal_wifi_4_bar_white_36px.svg"></md-icon>
                     <md-icon ng-show="!auth.connected" class="indicator" md-svg-src="res/ic_signal_wifi_off_white_36px.svg"></md-icon>
 				</div>
@@ -55,9 +51,20 @@
                     </md-input-container>
                 </div>
 
+                <div layout-gt-sm="row">
+                    <md-checkbox class="md-primary" ng-model="auth.remember"  ng-change="auth.updateRemember()" aria-label="Remember me">
+                        Remember me (uncheck on a public computer)
+                    </md-checkbox>
+                </div>
+
                 <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
                     <md-button class="md-primary md-raised" type="submit" aria-label="Add task">Login</md-button>
                     <md-button ng-click="auth.logout()" class="md-raised md-warn">Logout</md-button>
+                    <md-button ng-click="auth.forget()" class="md-raised ">Forget me</md-button>
+                </section>
+
+                <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+                    <md-button ng-href="https://shahidhk.github.io/iitm-network-auth-app" class="js-external-link">About</md-button>
                 </section>
 			</form>
 

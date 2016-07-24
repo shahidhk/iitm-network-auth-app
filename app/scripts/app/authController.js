@@ -9,14 +9,18 @@
         // List of bindable properties and methods
         var ctrl = this;
         // Get username and password from localstorage
-        ctrl.username = $window.localStorage.getItem('ldap_username');
-        ctrl.password = $window.localStorage.getItem('ldap_password');
+        ctrl.username = $window.localStorage.getItem('ldap_username') || '';
+        ctrl.password = $window.localStorage.getItem('ldap_password') || '';
+        ctrl.remember = JSON.parse($window.localStorage.getItem('remember')) || false;
+        ctrl.credentials = ctrl.username && ctrl.password;
         ctrl.mode = 'nfw';
         ctrl.loading = false;
         ctrl.connected = false;
         ctrl.login = login;
         ctrl.logout = logout;
+        ctrl.forget = forget;
         ctrl.shouldConnect = true;
+        ctrl.updateRemember = updateRemember;
 
         ipcRenderer.on('log-in-done', function (e, arg) {
             ctrl.loading = false;
@@ -41,11 +45,17 @@
         ipcRenderer.on('session-refreshed', function (e) {
             showToast('Session refreshed');
         });
-
+        ipcRenderer.on('update-message', function(event, method) {
+            // Do not trigger an alert, rather notify in some other manner
+            // alert(method);
+            showToast(method);
+        });
         // Define ui login and logout functions
         function login() {
-            $window.localStorage.setItem('ldap_username', ctrl.username);
-            $window.localStorage.setItem('ldap_password', ctrl.password);
+            if (ctrl.remember) {
+                $window.localStorage.setItem('ldap_username', ctrl.username);
+                $window.localStorage.setItem('ldap_password', ctrl.password);
+            }
             ctrl.loading = true;
             ipcRenderer.send('do-log-in', ctrl.username, ctrl.password);
         }
@@ -55,17 +65,36 @@
             ipcRenderer.send('do-log-out'); 
         }
 
+        function forget() {
+            logout();
+            ctrl.username = '';
+            ctrl.password = '';
+            ctrl.remember = false;
+            $window.localStorage.setItem('ldap_username', ctrl.username);
+            $window.localStorage.setItem('ldap_password', ctrl.password);
+            $window.localStorage.setItem('remember', ctrl.remember);
+            showToast('Removed user from this system');
+        }
+        function updateRemember() {
+            $window.localStorage.setItem('remember', ctrl.remember);
+        }
+
         // Helper function to show simple toasts
         function showToast(message) {
             $mdToast.show(
                 $mdToast.simple()
                 .textContent(message)                       
                 .hideDelay(3000)
+                .position('top right')
             ); 
         }
 
         // Logout and start a new session when app opens
-        ipcRenderer.send('do-log-out'); 
+        if (ctrl.credentials) { 
+            ipcRenderer.send('do-log-out');
+        } else {
+            showToast("Enter credentials");
+        }
     }
 
 })();

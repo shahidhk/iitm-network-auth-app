@@ -18,6 +18,3 @@ function boot() {
 
 document.addEventListener('DOMContentLoaded', boot);
 
-ipcRenderer.on('update-message', function(event, method) {
-    alert(method);
-});
