@@ -51,9 +51,6 @@
       ]
     },
     "win": {
-      "target": ["squirrel","nsis"],  
-      "msi": true,
-      "remoteReleases": true,
       "iconUrl": "https://github.com/shahidhk/iitm-network-auth-app/blob/master/build/icon.ico?raw=true"
     },
     "linux": {
