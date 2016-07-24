@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>IIT Madras Network Auth by shahidhk</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-dark.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/shahidhk/iitm-network-auth-app">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/shahidhk/iitm-network-auth-app/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/shahidhk/iitm-network-auth-app/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>IIT Madras Network Auth</h1>
+          <p>Cross platform application for authentication inside IIT Madras campus network</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/shahidhk">shahidhk</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
+        </div>
+
+        <h1>
+<a id="iit-madras-network-auth" class="anchor" href="#iit-madras-network-auth" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>IIT Madras Network Auth</h1>
+
+<p>Cross platform desktop application for authenticating Windows/Linux/Mac devices with IIT Madras campus network. Built with <a href="http://electron.atom.io">electron</a>.</p>
+
+<h4>
+<a id="note-app-works-only-inside-iit-madras-campus-network" class="anchor" href="#note-app-works-only-inside-iit-madras-campus-network" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Note: app works only inside IIT Madras campus network.</h4>
+
+<p><img src="preview.png" alt="image"></p>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>Download the latest release for your platform from <a href="https://github.com/shahidhk/iitm-network-auth-app/releases">GitHub Releases page</a>.</p>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage</h2>
+
+<ul>
+<li>Type in the username, password and click login.</li>
+<li>Check save option to keep username and password in the system.</li>
+<li>This will create a new session with IIT Madras network firewall.</li>
+<li>The connectivity indicator below the IITM logo shows current status, whether connected or not.</li>
+<li>Keep the application open to maintain the login session.</li>
+<li>Use the logout button to terminate the session.</li>
+<li>Note: each login session is valid for 10 minutes. The application refresh the session every 9 minutes. Hence, even if you close the application, the session maybe valid for at-most 10 minutes, unless you logout.</li>
+<li>The app will automatically download and install updates.</li>
+</ul>
+
+<h2>
+<a id="privacy-and-security" class="anchor" href="#privacy-and-security" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Privacy and Security</h2>
+
+<ul>
+<li>This application does not collect any personal information regarding the user. </li>
+<li>The username and password used for authentication are stored using the <code>window.localStorage</code> method, in order to automatically connect at startup.</li>
+<li>The application may collect anonymous telemetry data for statistical purposes.</li>
+<li>The application will occasionally contact the update server for checking and downloading updates.</li>
+</ul>
+
+<h2>
+<a id="contributing" class="anchor" href="#contributing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Contributing</h2>
+
+<p>Pull requests and issues are most welcome.</p>
+
+<p>The app is made using <a href="http://electron.atom.io">electron</a>, and built with <a href="https://github.com/electron-userland/electron-builder">electron-builder</a> using <a href="https://travis-ci.org">Travis CI</a> for Linux/Mac builds and <a href="http://www.appveyor.com">Appveyor CI</a> for Windows builds. </p>
+
+<h2>
+<a id="todo" class="anchor" href="#todo" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Todo</h2>
+
+<ul>
+<li>Re-authentication on waking up from sleep.</li>
+<li>Implement <code>netaccess</code> authentication </li>
+</ul>
+
+<h2>
+<a id="credits" class="anchor" href="#credits" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Credits</h2>
+
+<ul>
+<li><a href="http://electron.atom.io">electron</a></li>
+<li><a href="https://github.com/electron-userland/electron-builder">electron-builder</a></li>
+<li>
+<a href="https://github.com/Vj3k0/ea-todo">ea-todo</a> by <a href="https://github.com/Vj3k0">Vjekoslav Ratkajec</a>
+</li>
+<li>
+<a href="https://travis-ci.org">Travis CI</a> </li>
+<li><a href="http://www.appveyor.com">Appveyor CI</a></li>
+<li><a href="https://shahidhk.github.io/iitm-network-auth">iitm-network-auth</a></li>
+</ul>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h2>
+
+<p><a href="LICENSE">MIT</a></p>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
