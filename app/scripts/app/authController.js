@@ -26,10 +26,6 @@
         ctrl.appDetails = {};
 
         ipcRenderer.on('log-in-done', function (e, arg) {
-            if (!ctrl.pageOpened) {
-                $analytics.pageTrack('/app');
-                ctrl.pageOpened = true;
-            }
             $analytics.eventTrack('login', {page: '/app'});
             ctrl.loading = false;
             ctrl.connected = true;
@@ -106,7 +102,6 @@
             ); 
         }
 
-
         // Logout and start a new session when app opens
         if (ctrl.credentials) { 
             ipcRenderer.send('do-log-out');
@@ -116,18 +111,23 @@
 
         ipcRenderer.on('app-details', function(event, args){
             ctrl.appDetails = args; 
-            $http.get('https://server.waviness63.hasura-app.io/update/'+ args.platform + '/' + args.version).then(
-                function(resp) {
-                    if (resp.data) {
-                        ctrl.updateAvailable = true;
-                        ctrl.updateData = resp.data;
-                        showToast('Update available');
+            ctrl.appDetails.vversion = 'v' + ctrl.appDetails.version;
+            if (!ctrl.pageOpened) {
+                $analytics.pageTrack('/app/v' + args.version);
+                $http.get('https://server.waviness63.hasura-app.io/update/'+ args.platform + '/' + args.version).then(
+                    function(resp) {
+                        if (resp.data) {
+                            ctrl.updateAvailable = true;
+                            ctrl.updateData = resp.data;
+                            showToast('Update available');
+                        }
+                    },
+                    function(error) {
+                        showToast('ERROR: Unable to reach update server');
                     }
-                },
-                function(error) {
-                    showToast('ERROR: Unable to reach update server');
-                }
-            );
+                );
+                ctrl.pageOpened = true;
+            }
         });
     }
 

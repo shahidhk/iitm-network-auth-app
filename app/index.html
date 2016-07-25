@@ -63,11 +63,11 @@
                 <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
                     <md-button class="md-primary md-raised" type="submit" aria-label="Login">Login</md-button>
                     <md-button ng-click="auth.logout()" class="md-raised md-warn" >Logout</md-button>
-                    <md-button ng-click="auth.forget()" class="md-raised" >Forget me</md-button>
+                    <md-button ng-click="auth.forget()" class="md-raised" >Forget</md-button>
                 </section>
 
                 <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
-                    <md-button ng-href="https://shahidhk.github.io/iitm-network-auth-app" class="js-external-link">About v{{auth.appDetails.version}}</md-button>
+                    <md-button ng-href="https://shahidhk.github.io/iitm-network-auth-app" class="js-external-link">About {{auth.appDetails.vversion}}</md-button>
                     <md-button ng-href="{{auth.updateData.url}}" class="js-external-link md-primary" ng-show="auth.updateAvailable">Update to v{{auth.updateData.name}}</md-button>
                 </section>
 			</form>
