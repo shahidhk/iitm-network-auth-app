@@ -5,8 +5,9 @@
 
 Cross platform desktop application for authenticating Windows/Linux/Mac devices with IIT Madras campus network. Built with [electron](http://electron.atom.io).
 
-##### Note: app works only inside IIT Madras campus network.
-#### Please file bugs and feature requests at [issues](https://github.com/shahidhk/iitm-network-auth-app/issues).
+**Note: app works only inside IIT Madras campus network.**  
+** Please file bugs and feature requests at [issues](https://github.com/shahidhk/iitm-network-auth-app/issues).**
+
 
 ## Download
 [![ubuntu](https://github.com/shahidhk/iitm-network-auth-app/raw/master/build/ubuntu.png)](https://server.waviness63.hasura-app.io/download/version/latest/linux)
@@ -22,7 +23,7 @@ Cross platform desktop application for authenticating Windows/Linux/Mac devices 
 
 Download the latest release for your platform from [GitHub Releases page](https://github.com/shahidhk/iitm-network-auth-app/releases).
 
-##### Note: Windows and Mac systems might show some security warnings. Please override/ignore these restrictions and install the app, as these warnings occur due to not signing the executable, which requires buying a code-signing certificate.
+**Note: Windows and Mac systems might show some security warnings. Please override/ignore these restrictions and install the app, as these warnings occur due to not signing the executable, which requires buying a code-signing certificate.**
 
 ## Usage
 
