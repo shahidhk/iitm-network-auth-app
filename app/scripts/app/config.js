@@ -2,7 +2,12 @@
 
 	angular
 		.module('app')
-		.config(['$mdThemingProvider', configure]);
+		.config(['$mdThemingProvider', configure])
+        .config(['$analyticsProvider', analyticsConfigure]);
+
+    function analyticsConfigure($analyticsProvider) {
+        $analyticsProvider.virtualPageviews(false);
+    }
 
 	function configure($mdThemingProvider) {
 	    // Configure a dark theme with primary foreground yellow

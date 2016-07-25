@@ -22,7 +22,7 @@ var feedURL = "";
 // Don't use auto-updater if we are in development 
 if (!isDevelopment) {
     if (os.platform() === 'darwin') {
-        updateFeed = 'https://server.waviness63.hasura-app.io/update/darwin/' + app.getVersion();;
+        updateFeed = 'https://server.waviness63.hasura-app.io/update/darwin/' + app.getVersion();
     }
     else if (os.platform() === 'win32') {
         updateFeed = 'https://server.waviness63.hasura-app.io/update/win32/' +app.getVersion();
@@ -76,7 +76,7 @@ app.on('ready', function() {
     // Other options available at:
     // http://electron.atom.io/docs/latest/api/browser-window/#new-browserwindow-options
     var w = 400;
-    var h = 600; 
+    var h = 650; 
     mainWindow = new BrowserWindow({
         name: "iitm-network-auth",
         width: w,
@@ -93,8 +93,9 @@ app.on('ready', function() {
     // Target HTML file which will be opened in window
     mainWindow.loadURL('file://' + __dirname + "/index.html");
 
-    // Uncomment to use Chrome developer tools
-    //mainWindow.webContents.openDevTools({detach:true});
+    if (isDevelopment) {
+        mainWindow.webContents.openDevTools({detach:true});
+    }
 
     // Cleanup when window is closed
     mainWindow.on('closed', function() {
@@ -149,3 +150,9 @@ ipcMain.on('do-log-in', function (event, username, password) {
     auth.login()
 });
 
+ipcMain.on('get-app-details', function() {
+    var details = {};
+    details.version = app.getVersion();
+    details.platform = os.platform();
+    mainWindow.webContents.send('app-details', details);
+});

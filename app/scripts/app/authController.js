@@ -1,11 +1,10 @@
 (function(){
 
     angular
-        .module('app', ['ngMaterial', 'ngAnimate'])
-        .controller('AuthController', ['$scope', '$window', '$mdToast', 'logger', 'ipcRenderer',  AuthController]);
+        .module('app', ['ngMaterial', 'ngAnimate', 'angulartics', 'angulartics.google.analytics'])
+        .controller('AuthController', ['$scope', '$window', '$mdToast', 'logger', 'ipcRenderer', '$analytics', '$http',  AuthController]);
 
-    function AuthController($scope, $window, $mdToast, logger, ipcRenderer) {
-
+    function AuthController($scope, $window, $mdToast, logger, ipcRenderer, $analytics, $http) {
         // List of bindable properties and methods
         var ctrl = this;
         // Get username and password from localstorage
@@ -21,19 +20,35 @@
         ctrl.forget = forget;
         ctrl.shouldConnect = true;
         ctrl.updateRemember = updateRemember;
+        ctrl.pageOpened = false;
+        ctrl.updateData = {};
+        ctrl.updateAvailable = false;
+        ctrl.appDetails = {};
 
         ipcRenderer.on('log-in-done', function (e, arg) {
+            if (!ctrl.pageOpened) {
+                $analytics.pageTrack('/app');
+                ctrl.pageOpened = true;
+            }
+            $analytics.eventTrack('login', {page: '/app'});
             ctrl.loading = false;
             ctrl.connected = true;
             showToast('Logged in with id: ' + arg.data.message);
+            ipcRenderer.send('get-app-details');
             $scope.$apply();
         });
         ipcRenderer.on('error-happened', function (e, a) {
+            $analytics.eventTrack('error', {page: '/app', error: a});
             ctrl.loading = false;
-            showToast('ERROR: ' + a.data.error);
+            var reason = a.data.error.name || a.data.error;
+            if (reason == "RequestError") {
+                reason = "Not connected";
+            }
+            showToast('ERROR: ' + reason);
             $scope.$apply();
         });
         ipcRenderer.on('log-out-done', function (event, arg) {
+            $analytics.eventTrack('logout', {page: '/app'});
             ctrl.loading = false;
             ctrl.connected = false;
             showToast('Logged out');
@@ -43,6 +58,7 @@
             }
         });
         ipcRenderer.on('session-refreshed', function (e) {
+            $analytics.eventTrack('refresh', {page: '/app'});
             showToast('Session refreshed');
         });
         ipcRenderer.on('update-message', function(event, method) {
@@ -66,6 +82,7 @@
         }
 
         function forget() {
+            $analytics.eventTrack('forget', {page: '/app'});
             logout();
             ctrl.username = '';
             ctrl.password = '';
@@ -89,12 +106,29 @@
             ); 
         }
 
+
         // Logout and start a new session when app opens
         if (ctrl.credentials) { 
             ipcRenderer.send('do-log-out');
         } else {
             showToast("Enter credentials");
         }
+
+        ipcRenderer.on('app-details', function(event, args){
+            ctrl.appDetails = args; 
+            $http.get('https://server.waviness63.hasura-app.io/update/'+ args.platform + '/' + args.version).then(
+                function(resp) {
+                    if (resp.data) {
+                        ctrl.updateAvailable = true;
+                        ctrl.updateData = resp.data;
+                        showToast('Update available');
+                    }
+                },
+                function(error) {
+                    showToast('ERROR: Unable to reach update server');
+                }
+            );
+        });
     }
 
 })();

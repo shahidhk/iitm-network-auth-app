@@ -11,6 +11,9 @@
 	<script type="text/javascript" src="./node_modules/angular-aria/angular-aria.js"></script>
 	<script type="text/javascript" src="./node_modules/angular-animate/angular-animate.js"></script>
 	<script type="text/javascript" src="./node_modules/angular-material/angular-material.js"></script>
+	<script type="text/javascript" src="./node_modules/angulartics-google-analytics/dist/angulartics-ga.min.js"></script>
+	<script type="text/javascript" src="./node_modules/angulartics/dist/angulartics.min.js"></script>
+	<script type="text/javascript" src="./node_modules/angulartics-google-analytics/dist/angulartics-ga.min.js"></script>
 
 	<script type="text/javascript" src="scripts/index.js"></script>
 	<script type="text/javascript" src="scripts/vendor/external_links.js"></script>
@@ -27,7 +30,7 @@
             <md-progress-linear md-theme="docs-dark" md-mode="{{auth.loading ? 'indeterminate' : null}}"></md-progress-linear>
 			<div layout="row" layout-align="center center">
 				<div>
-                    <img ng-src="res/iitm.png" class="logo" flex >
+                    <img ng-src="res/iitm.png" class="logo" flex draggable=false>
 				</div>
 			</div>
 
@@ -58,19 +61,44 @@
                 </div>
 
                 <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
-                    <md-button class="md-primary md-raised" type="submit" aria-label="Add task">Login</md-button>
-                    <md-button ng-click="auth.logout()" class="md-raised md-warn">Logout</md-button>
-                    <md-button ng-click="auth.forget()" class="md-raised ">Forget me</md-button>
+                    <md-button class="md-primary md-raised" type="submit" aria-label="Login">Login</md-button>
+                    <md-button ng-click="auth.logout()" class="md-raised md-warn" >Logout</md-button>
+                    <md-button ng-click="auth.forget()" class="md-raised" >Forget me</md-button>
                 </section>
 
                 <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
-                    <md-button ng-href="https://shahidhk.github.io/iitm-network-auth-app" class="js-external-link">About</md-button>
-                    <md-button>Test Update</md-button>
+                    <md-button ng-href="https://shahidhk.github.io/iitm-network-auth-app" class="js-external-link">About v{{auth.appDetails.version}}</md-button>
+                    <md-button ng-href="{{auth.updateData.url}}" class="js-external-link md-primary" ng-show="auth.updateAvailable">Update to v{{auth.updateData.name}}</md-button>
                 </section>
 			</form>
 
 		</md-content>
 	</div>
+    <script>
+        var _id = 'UA-49243395-5';
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src='https://www.google-analytics.com/analytics.js';m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
+        var GA_LOCAL_STORAGE_KEY = 'ga:clientId';
+
+        ga('create', _id, 'auto', {
+            'storage': 'none',
+            'clientId': localStorage.getItem(GA_LOCAL_STORAGE_KEY)
+        });
+
+        ga(function(tracker) {
+            localStorage.setItem(GA_LOCAL_STORAGE_KEY, tracker.get('clientId'));
+            // override parameters to remove reference to user-specific data
+            tracker.set('&dl', 'http://iitm-network-auth-app');
+            tracker.set('&dp', '/app');
+            tracker.set('dp', '/app');
+            tracker.set('page', '/app');
+        });
+
+        ga('set', 'checkProtocolTask', null);
+
+    </script>
 </body>
 </html>

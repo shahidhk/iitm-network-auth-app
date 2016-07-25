@@ -4,7 +4,7 @@ Cross platform desktop application for authenticating Windows/Linux/Mac devices 
 
 #### Note: app works only inside IIT Madras campus network.
 
-![image](preview.png)
+![image](https://github.com/shahidhk/iitm-network-auth-app/raw/master/preview.png)
 
 ## Installation
 
@@ -19,7 +19,8 @@ Download the latest release for your platform from [GitHub Releases page](https:
 - Keep the application open to maintain the login session.
 - Use the logout button to terminate the session.
 - Note: each login session is valid for 10 minutes. The application refresh the session every 9 minutes. Hence, even if you close the application, the session maybe valid for at-most 10 minutes, unless you logout.
-- The app will automatically download and install updates.
+- The app will automatically download and install updates on Windows and Mac.
+- New updates will be shown at the bottom, click that to download.
 
 ## Privacy and Security
 
