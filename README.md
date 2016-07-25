@@ -11,7 +11,7 @@ Cross platform desktop application for authenticating Windows/Linux/Mac devices 
 ## Download
 [![ubuntu](https://github.com/shahidhk/iitm-network-auth-app/raw/master/build/ubuntu.png)](https://server.waviness63.hasura-app.io/download/version/latest/linux)
 [![debian](https://github.com/shahidhk/iitm-network-auth-app/raw/master/build/debian.png)](https://server.waviness63.hasura-app.io/download/version/latest/linux)
-[![AppImage](https://github.com/shahidhk/iitm-network-auth-app/raw/master/build/linux.png)](https://server.waviness63.hasura-app.io/download/version/latest/appimage)
+[![appimage](https://github.com/shahidhk/iitm-network-auth-app/raw/master/build/linux.png)](https://server.waviness63.hasura-app.io/download/version/latest/appimage)
 [![windows](https://github.com/shahidhk/iitm-network-auth-app/raw/master/build/windows.png)](https://server.waviness63.hasura-app.io/download/version/latest/windows)
 [![macos](https://github.com/shahidhk/iitm-network-auth-app/raw/master/build/mac.png)](https://server.waviness63.hasura-app.io/download/version/latest/mac)  
 
