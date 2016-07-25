@@ -6,7 +6,7 @@
 Cross platform desktop application for authenticating Windows/Linux/Mac devices with IIT Madras campus network. Built with [electron](http://electron.atom.io).
 
 **Note: app works only inside IIT Madras campus network.**  
-** Please file bugs and feature requests at [issues](https://github.com/shahidhk/iitm-network-auth-app/issues).**
+**Please file bugs and feature requests at [issues](https://github.com/shahidhk/iitm-network-auth-app/issues).**
 
 
 ## Download
