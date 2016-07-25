@@ -40,8 +40,8 @@ Download the latest release for your platform from [GitHub Releases page](https:
 ## Privacy and Security
 
 - This application does not collect any personal information regarding the user. 
-- The username and password used for authentication are stored using the `window.localStorage` method, in order to automatically connect at startup.
-- The application may collect anonymous telemetry data for statistical purposes.
+- The username and password used for authentication are stored locally, in order to automatically connect at startup.
+- The application may collect anonymous data for statistical purposes.
 - The application will occasionally contact the update server for checking and downloading updates.
 
 ## Contributing
@@ -52,7 +52,7 @@ The app is made using [electron](http://electron.atom.io), and built with [elect
 
 ## Todo
 - Re-authentication on waking up from sleep.
-- Implement `netaccess` authentication 
+- Implement `netaccess` authentication.
 
 ## Credits
 - [electron](http://electron.atom.io)
