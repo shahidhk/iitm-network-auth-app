@@ -1,14 +1,28 @@
 # IIT Madras Network Auth 
 
+[![Build Status](https://travis-ci.org/shahidhk/iitm-network-auth-app.svg?branch=master)](https://travis-ci.org/shahidhk/iitm-network-auth-app) [![Build status](https://ci.appveyor.com/api/projects/status/rf1ruqokr1hai9ds?svg=true&retina=true)](https://ci.appveyor.com/project/shahidhk/iitm-network-auth-app)
+
+
 Cross platform desktop application for authenticating Windows/Linux/Mac devices with IIT Madras campus network. Built with [electron](http://electron.atom.io).
 
-#### Note: app works only inside IIT Madras campus network.
+##### Note: app works only inside IIT Madras campus network.
+#### Please file bugs and feature requests at [issues](https://github.com/shahidhk/iitm-network-auth-app/issues).
 
+## Download
+[![ubuntu](https://github.com/shahidhk/iitm-network-auth-app/raw/master/build/ubuntu.png)](https://server.waviness63.hasura-app.io/download/version/latest/linux)
+[![debian](https://github.com/shahidhk/iitm-network-auth-app/raw/master/build/debian.png)](https://server.waviness63.hasura-app.io/download/version/latest/linux)
+[![AppImage](https://github.com/shahidhk/iitm-network-auth-app/raw/master/build/linux.png)](https://server.waviness63.hasura-app.io/download/version/latest/appimage)
+[![windows](https://github.com/shahidhk/iitm-network-auth-app/raw/master/build/windows.png)](https://server.waviness63.hasura-app.io/download/version/latest/windows)
+[![macos](https://github.com/shahidhk/iitm-network-auth-app/raw/master/build/mac.png)](https://server.waviness63.hasura-app.io/download/version/latest/mac)  
+
+## Screenshot 
 ![image](https://github.com/shahidhk/iitm-network-auth-app/raw/master/preview.png)
 
 ## Installation
 
 Download the latest release for your platform from [GitHub Releases page](https://github.com/shahidhk/iitm-network-auth-app/releases).
+
+##### Note: Windows and Mac systems might show some security warnings. Please override/ignore these restrictions and install the app, as these warnings occur due to not signing the executable, which requires buying a code-signing certificate.
 
 ## Usage
 
@@ -42,6 +56,8 @@ The app is made using [electron](http://electron.atom.io), and built with [elect
 ## Credits
 - [electron](http://electron.atom.io)
 - [electron-builder](https://github.com/electron-userland/electron-builder)
+- [nuts](https://github.com/GitbookIO/nuts)
+- [hasura](https://hasura.io)
 - [ea-todo](https://github.com/Vj3k0/ea-todo) by [Vjekoslav Ratkajec](https://github.com/Vj3k0)
 - [Travis CI](https://travis-ci.org) 
 - [Appveyor CI](http://www.appveyor.com)
@@ -49,4 +65,4 @@ The app is made using [electron](http://electron.atom.io), and built with [elect
 
 ## License 
 
-[MIT](LICENSE)
+[MIT](https://github.com/shahidhk/iitm-network-auth-app/blob/master/LICENSE)
