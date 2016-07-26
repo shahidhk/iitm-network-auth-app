@@ -92,9 +92,6 @@
             localStorage.setItem(GA_LOCAL_STORAGE_KEY, tracker.get('clientId'));
             // override parameters to remove reference to user-specific data
             tracker.set('&dl', 'http://iitm-network-auth-app');
-            tracker.set('&dp', '/app');
-            tracker.set('dp', '/app');
-            tracker.set('page', '/app');
         });
 
         ga('set', 'checkProtocolTask', null);
