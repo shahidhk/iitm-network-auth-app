@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/shahidhk/iitm-network-auth-app.svg?branch=master)](https://travis-ci.org/shahidhk/iitm-network-auth-app) [![Build status](https://ci.appveyor.com/api/projects/status/rf1ruqokr1hai9ds?svg=true&retina=true)](https://ci.appveyor.com/project/shahidhk/iitm-network-auth-app) [![Analytics](https://ga-beacon.appspot.com/UA-49243395-6/home-page)](https://github.com/igrigorik/ga-beacon)
 
-Cross platform desktop application for authenticating Windows/Linux/Mac devices with IIT Madras campus network. Built with [electron](http://electron.atom.io).
+Cross platform desktop application for authenticating Windows/Linux/Mac devices with IIT Madras campus network firewall. Built with [electron](http://electron.atom.io).
 
 **Note: app works only inside IIT Madras campus network.**  
 **Please file bugs and feature requests at [issues](https://github.com/shahidhk/iitm-network-auth-app/issues).**
