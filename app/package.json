@@ -1,7 +1,7 @@
 {
   "name": "iitmnetworkauthapp",
   "productName": "IIT Madras Network Auth",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Cross platform application for authentication inside IIT Madras campus network.",
   "repository": "https://github.com/shahidhk/iitm-network-auth-app",
   "author": "Shahidh K Muhammed <shahidhkmuhammed@gmail.com>",
