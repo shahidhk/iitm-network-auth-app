@@ -84,7 +84,7 @@ app.on('ready', function() {
         minWidth: w,
         minHeight: h,
         darkTheme: true,
-        fullscreenable: false,
+        fullscreenable: true,
         toolbar: false
     });
 
